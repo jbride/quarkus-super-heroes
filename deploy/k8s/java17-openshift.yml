@@ -1059,7 +1059,7 @@ spec:
         - env:
             - name: REGISTRY_AUTH_ANONYMOUS_READ_ACCESS_ENABLED
               value: "true"
-          image: quay.io/apicurio/apicurio-registry-mem:2.4.2.Final
+          image: docker.io/apicurio/apicurio-registry-mem:2.4.2.Final
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -1202,7 +1202,7 @@ spec:
         - args:
             - job
             - liquibase-mongodb-init
-          image: groundnuty/k8s-wait-for:1.3
+          image: groundnuty/k8s-wait-for:no-root-v1.7
           imagePullPolicy: IfNotPresent
           name: init
   triggers:
@@ -1220,7 +1220,7 @@ kind: Job
 metadata:
   name: liquibase-mongodb-init
 spec:
-  completionMode: OnFailure
+  completionMode: NonIndexed
   template:
     metadata: {}
     spec:
@@ -1511,7 +1511,7 @@ spec:
         - env:
             - name: REGISTRY_AUTH_ANONYMOUS_READ_ACCESS_ENABLED
               value: "true"
-          image: quay.io/apicurio/apicurio-registry-mem:2.4.4.Final
+          image: docker.io/apicurio/apicurio-registry-mem:2.4.2.Final
           livenessProbe:
             failureThreshold: 3
             httpGet:
